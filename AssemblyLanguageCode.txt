@@ -1,0 +1,20 @@
+lw x1, 0(x0) 
+lw x2, 1(x0) 
+lw x3, 2(x0) 
+lw x4, 3(x0) 
+lw x5, 4(x0) 
+addi x5, x5, 1
+check:	beq x3,  x5, result  
+sltu x6, x1, x2 
+bne x6, x0, swap 
+bne x2, x0, subtract 
+addi x3, x3,1 
+beq x0, x0, check 
+swap:	add x7, x1, x0
+add x1, x2, x0
+add x2, x7, x0
+beq x0, x0, check 
+subtract:	sub x1, x1, x2 
+beq x0, x0, check 	
+result:	add x4, x1, x0
+beq x1,x1,0
